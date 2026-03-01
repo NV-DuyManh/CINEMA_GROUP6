@@ -30,7 +30,7 @@ namespace Cinema
 
         private void BtnSuatChieu_Click(object sender, RoutedEventArgs e)
         {
-            //MainFrame.Navigate(new QLSuatChieu());
+            MainFrame.Navigate(new QLSuatChieu());
         }
 
         private void BtnTaiKhoan_Click(object sender, RoutedEventArgs e)

@@ -1,0 +1,226 @@
+﻿<Page x:Class="Cinema.QLSuatChieu"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Cinema"
+      mc:Ignorable="d" 
+      d:DesignHeight="750" d:DesignWidth="1100"
+      Title="Quản lý suất chiếu" Background="#F4F6F9">
+
+    <Page.Resources>
+        <local:EndTimeConverter x:Key="EndTimeConverter"/>
+
+        <Style TargetType="Button" x:Key="BtnStandard">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="bd" Background="{TemplateBinding Background}" CornerRadius="6" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd" Property="Opacity" Value="0.85"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bd" Property="Opacity" Value="0.7"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="8,0"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderBrush" Value="#DCDDE1"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style TargetType="DatePicker">
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="QUẢN LÝ SUẤT CHIẾU" FontSize="24" FontWeight="Bold" Foreground="#2C3E50" Margin="0,0,0,20"/>
+
+        <Border Grid.Row="1" Background="White" CornerRadius="10" Padding="20" Margin="0,0,0,20">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="15" Direction="270" Opacity="0.1" ShadowDepth="2"/>
+            </Border.Effect>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Margin="10,5">
+                    <TextBlock Text="Tìm kiếm phim" Foreground="#7F8C8D" Margin="0,0,0,5"/>
+                    <TextBox x:Name="txt_tim_kiem" Text="Nhập tên phim để tìm..." GotFocus="txt_tim_kiem_GotFocus" LostFocus="txt_tim_kiem_LostFocus" TextChanged="txt_tim_kiem_TextChanged" Foreground="#95A5A6"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Margin="10,5">
+                    <TextBlock Text="Rạp chiếu" Foreground="#7F8C8D" Margin="0,0,0,5"/>
+                    <ComboBox x:Name="cmb_FilterPhong" SelectionChanged="Filter_Changed"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" Margin="10,5">
+                    <TextBlock Text="Ngày chiếu" Foreground="#7F8C8D" Margin="0,0,0,5"/>
+                    <DatePicker x:Name="dp_FilterNgay" SelectedDateChanged="Filter_Changed"/>
+                </StackPanel>
+
+                <Button Grid.Column="3" x:Name="btnClearFilter" Style="{StaticResource BtnStandard}" Background="#95A5A6" Content="Làm mới" Width="100" Margin="10,23,5,5" Click="btnClearFilter_Click"/>
+                <Button Grid.Column="4" x:Name="btn_hien_form_them" Style="{StaticResource BtnStandard}" Background="#27AE60" Content="+ Thêm mới" Width="120" Margin="5,23,10,5" Click="btn_hien_form_them_Click"/>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="2" Background="White" CornerRadius="10" Padding="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <DataGrid x:Name="dtg_suat_chieu" AutoGenerateColumns="False" CanUserAddRows="False" Background="White" BorderThickness="0" GridLinesVisibility="None" RowHeight="45" SelectionUnit="FullRow" IsReadOnly="True" AlternatingRowBackground="#F8F9FA">
+                    <DataGrid.ColumnHeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="#2C3E50"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Padding" Value="15,5"/>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                            <Setter Property="Height" Value="40"/>
+                        </Style>
+                    </DataGrid.ColumnHeaderStyle>
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Tên Phim" Binding="{Binding phim.ten_phim}" Width="2.5*">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                    <Setter Property="Foreground" Value="#2C3E50"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="Padding" Value="15,0"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn Header="Phòng Chiếu" Binding="{Binding phongchieu.ten_phong}" Width="*">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="Padding" Value="15,0"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn Header="Ngày Chiếu" Binding="{Binding ngay_chieu, StringFormat=\{0:dd/MM/yyyy\}}" Width="1.2*">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="Padding" Value="15,0"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTemplateColumn Header="Khung Giờ" Width="1.5*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="15,0">
+                                        <TextBlock Text="{Binding gio_bat_dau, StringFormat=\{0:hh\\:mm\}}" FontWeight="Bold" Foreground="#34495E"/>
+                                        <TextBlock Text=" - " Foreground="#7F8C8D"/>
+                                        <TextBlock Foreground="#7F8C8D">
+                                            <TextBlock.Text>
+                                                <MultiBinding Converter="{StaticResource EndTimeConverter}">
+                                                    <Binding Path="gio_bat_dau"/>
+                                                    <Binding Path="phim.thoi_luong"/>
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTextColumn Header="Giá Vé" Binding="{Binding gia_ve_co_ban, StringFormat={}{0:N0} đ}" Width="1.2*">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground" Value="#E67E22"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="Padding" Value="15,0"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTemplateColumn Header="Thao tác" Width="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Style="{StaticResource BtnStandard}" Content="Xóa" Background="#E74C3C" Width="60" Height="30" Click="btn_xoa_Click"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <TextBlock Grid.Row="1" x:Name="txt_ket_qua" Text="Sẵn sàng." Foreground="#7F8C8D" Margin="5,10,0,0"/>
+            </Grid>
+        </Border>
+
+        <Grid x:Name="ModalOverlay" Grid.RowSpan="3" Background="#80000000" Visibility="Collapsed" Panel.ZIndex="100">
+            <Border Background="White" Width="550" VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="12" Padding="25">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20" ShadowDepth="5" Opacity="0.3"/>
+                </Border.Effect>
+                <StackPanel>
+                    <TextBlock Text="THÊM SUẤT CHIẾU MỚI" FontSize="20" FontWeight="Bold" Foreground="#2C3E50" Margin="0,0,0,20" HorizontalAlignment="Center"/>
+
+                    <TextBlock x:Name="txt_ThongBaoBaoTri" Text="⚠️ Rạp này đang bảo trì!" Foreground="#E74C3C" FontWeight="Bold" Margin="0,0,0,10" Visibility="Collapsed" HorizontalAlignment="Center"/>
+
+                    <TextBlock Text="Tên phim" FontWeight="SemiBold" Foreground="#7F8C8D" Margin="0,0,0,5"/>
+                    <ComboBox x:Name="cmb_Phim" Margin="0,0,0,15"/>
+
+                    <TextBlock Text="Phòng chiếu" FontWeight="SemiBold" Foreground="#7F8C8D" Margin="0,0,0,5"/>
+                    <ComboBox x:Name="cmb_Phong" Margin="0,0,0,15" SelectionChanged="Modal_Phong_SelectionChanged"/>
+
+                    <TextBlock Text="Ngày chiếu" FontWeight="SemiBold" Foreground="#7F8C8D" Margin="0,0,0,5"/>
+                    <DatePicker x:Name="dp_NgayChieu" Margin="0,0,0,15"/>
+
+                    <TextBlock Text="Giờ bắt đầu (VD: 19:30)" FontWeight="SemiBold" Foreground="#7F8C8D" Margin="0,0,0,5"/>
+                    <TextBox x:Name="txt_GioChieu" Margin="0,0,0,15"/>
+
+                    <TextBlock Text="Giá vé cơ bản (VNĐ)" FontWeight="SemiBold" Foreground="#7F8C8D" Margin="0,0,0,5"/>
+                    <TextBox x:Name="txt_GiaVe" Margin="0,0,0,25" KeyDown="FastEntry_KeyDown"/>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="btn_LuuNhanh" Style="{StaticResource BtnStandard}" Background="#27AE60" Content="Lưu suất chiếu" Width="130" Margin="0,0,15,0" Click="btn_LuuNhanh_Click"/>
+                        <Button Style="{StaticResource BtnStandard}" Background="#95A5A6" Content="Hủy bỏ" Width="100" Click="btn_HuyNhap_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>
