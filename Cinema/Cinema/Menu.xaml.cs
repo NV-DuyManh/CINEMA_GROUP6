@@ -25,7 +25,7 @@ namespace Cinema
 
         private void BtnSanPham_Click(object sender, RoutedEventArgs e)
         {
-            //MainFrame.Navigate(new qlsp());
+           MainFrame.Navigate(new qlsp());
         }
 
         private void BtnSuatChieu_Click(object sender, RoutedEventArgs e)

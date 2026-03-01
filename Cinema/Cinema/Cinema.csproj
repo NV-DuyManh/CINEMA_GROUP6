@@ -112,6 +112,9 @@
     <Compile Include="phongchieu.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="qlsp.xaml.cs">
+      <DependentUpon>qlsp.xaml</DependentUpon>
+    </Compile>
     <Compile Include="QLSuatChieu.xaml.cs">
       <DependentUpon>QLSuatChieu.xaml</DependentUpon>
     </Compile>
@@ -144,6 +147,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PagePhim.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="qlsp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
