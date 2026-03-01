@@ -118,6 +118,9 @@
     <Compile Include="QLSuatChieu.xaml.cs">
       <DependentUpon>QLSuatChieu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="QLTaiKhoan.xaml.cs">
+      <DependentUpon>QLTaiKhoan.xaml</DependentUpon>
+    </Compile>
     <Compile Include="sanpham.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -155,6 +158,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="QLSuatChieu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QLTaiKhoan.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
