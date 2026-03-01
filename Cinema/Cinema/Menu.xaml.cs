@@ -35,7 +35,7 @@ namespace Cinema
 
         private void BtnTaiKhoan_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new QLTaiKhoan());
+            //MainFrame.Navigate(new QLTaiKhoan());
         }
 
         private void BtnDangXuat_Click(object sender, RoutedEventArgs e)
