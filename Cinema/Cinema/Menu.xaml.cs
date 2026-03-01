@@ -20,7 +20,7 @@ namespace Cinema
 
         private void BtnPhim_Click(object sender, RoutedEventArgs e)
         {
-            //MainFrame.Navigate(new PagePhim());
+            MainFrame.Navigate(new PagePhim());
         }
 
         private void BtnSanPham_Click(object sender, RoutedEventArgs e)
