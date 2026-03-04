@@ -1,63 +1,133 @@
-﻿<Window x:Class="Cinema.WindowThemPhim"
+<Window x:Class="Cinema.WindowThemPhim"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Thêm phim"
-        Height="750"
-        Width="550"
+        Height="600"
+        Width="800"
         ResizeMode="CanResize"
         WindowStartupLocation="CenterScreen"
         Background="#F4F6F9">
 
+    <Window.Resources>
+
+        <!-- Label Style -->
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#2C3E50"/>
+            <Setter Property="Margin" Value="0,10,0,5"/>
+        </Style>
+
+        <!-- TextBox Style -->
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderBrush" Value="#D0D7DE"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <!-- ComboBox Style -->
+        <Style TargetType="ComboBox">
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <!-- Button Style -->
+        <Style TargetType="Button">
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#27AE60"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+    </Window.Resources>
+
     <Border Background="White"
-            Padding="25"
-            Margin="20"
-            CornerRadius="12">
+            CornerRadius="12"
+            Padding="30"
+            Margin="20">
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
 
-            <StackPanel>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-                <TextBlock Text="Tên phim"/>
-                <TextBox x:Name="txtTenPhim" Margin="0,5,0,15"/>
+            <!-- HEADER -->
+            <TextBlock Text="🎬 Thêm phim mới"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Foreground="#2C3E50"
+                       Margin="0,0,0,20"/>
 
-                <TextBlock Text="Mã thể loại"/>
-                <TextBox x:Name="txtMaTheLoai" Margin="0,5,0,15"/>
+            <!-- FORM -->
+            <Grid Grid.Row="1">
 
-                <TextBlock Text="Thời lượng (phút)"/>
-                <TextBox x:Name="txtThoiLuong" Margin="0,5,0,15"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-                <TextBlock Text="Ngày khởi chiếu"/>
-                <DatePicker x:Name="dpNgayKhoiChieu" Margin="0,5,0,15"/>
 
-                <TextBlock Text="Ngày kết thúc"/>
-                <DatePicker x:Name="dpNgayKetThuc" Margin="0,5,0,15"/>
 
-                <TextBlock Text="Mô tả"/>
-                <TextBox x:Name="txtMoTa"
-                         Height="60"
-                         AcceptsReturn="True"
-                         TextWrapping="Wrap"
-                         Margin="0,5,0,15"/>
+                <!-- LEFT COLUMN -->
+                <StackPanel Grid.Column="0">
 
-                <TextBlock Text="Trạng thái"/>
-                <ComboBox x:Name="cbTrangThai" Margin="0,5,0,15">
-                    <ComboBoxItem Content="DangChieu"/>
-                    <ComboBoxItem Content="SapChieu"/>
-                    <ComboBoxItem Content="NgungChieu"/>
-                </ComboBox>
+                    <TextBlock Text="Tên phim"/>
+                    <TextBox x:Name="txtTenPhim"/>
 
-                <TextBlock Text="Người nhập"/>
-                <TextBox x:Name="txtNguoiNhap" Margin="0,5,0,20"/>
+                    <TextBlock Text="Mã thể loại (Nhập từ 1 dến 8)"/>
+                    <TextBox x:Name="txtMaTheLoai"/>
 
-                <Button Content="Lưu"
-                        Height="40"
-                        Background="#27AE60"
-                        Foreground="White"
-                        FontWeight="Bold"
-                        Click="BtnLuu_Click"/>
+                    <TextBlock Text="Thời lượng (phút)"/>
+                    <TextBox x:Name="txtThoiLuong"/>
 
-            </StackPanel>
+                    <TextBlock Text="Trạng thái"/>
+                    <ComboBox x:Name="cbTrangThai">
+                        <ComboBoxItem Content="DangChieu"/>
+                        <ComboBoxItem Content="SapChieu"/>
+                        <ComboBoxItem Content="NgungChieu"/>
+                    </ComboBox>
 
-        </ScrollViewer>
+                </StackPanel>
+
+                <!-- RIGHT COLUMN -->
+                <StackPanel Grid.Column="2">
+
+                    <TextBlock Text="Ngày khởi chiếu"/>
+                    <DatePicker x:Name="dpNgayKhoiChieu"/>
+
+                    <TextBlock Text="Ngày kết thúc"/>
+                    <DatePicker x:Name="dpNgayKetThuc"/>
+
+                    <TextBlock Text="Số lượng người nhập"/>
+                    <TextBox x:Name="txtNguoiNhap"/>
+
+                    <TextBlock Text="Mô tả"/>
+                    <TextBox x:Name="txtMoTa"
+                             Height="100"
+                             AcceptsReturn="True"
+                             TextWrapping="Wrap"/>
+
+                </StackPanel>
+
+            </Grid>
+
+            <!-- BUTTON -->
+            <Button Grid.Row="2"
+                    Content="💾 Lưu phim"
+                    HorizontalAlignment="Right"
+                    Width="180"
+                    Margin="0,25,0,0"
+                    Click="BtnLuu_Click"/>
+
+        </Grid>
     </Border>
 </Window>
