@@ -80,12 +80,32 @@ Press **F5** in Visual Studio to start the program.
 
 ---
 ## 💻 Demo Interface
+
+### 1. Login
 <img width="1779" height="1083" alt="image" src="https://github.com/user-attachments/assets/2b6b8fc6-bcd1-4266-86f4-32d916477ef8" />
+
+### 2. Dashboard Admin
+
 <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/7030f17b-821b-4658-9158-adccdcff505e" />
+
+### 3. Dashboard Staff
+
 <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/ad789543-08d2-4bb3-bb5d-a83547052434" />
+
+### 4. Film Management
+
 <img width="1919" height="1159" alt="image" src="https://github.com/user-attachments/assets/8e6faaa1-35ff-4f3d-aa22-a81321558675" />
+
+### 5. Product Management
+
 <img width="1919" height="1147" alt="image" src="https://github.com/user-attachments/assets/93b3d58a-bd6e-4b0a-bc2e-d02a6b3cd8ed" />
+
+### 6. Screening Management
+
 <img width="1914" height="1138" alt="image" src="https://github.com/user-attachments/assets/337bbfb8-2733-4408-b17a-8bf9b4ec254a" />
+
+### 7. Account Management
+
 <img width="1919" height="1152" alt="image" src="https://github.com/user-attachments/assets/735e670b-ec7c-4135-9fff-1ca7596c16d1" />
 
 
