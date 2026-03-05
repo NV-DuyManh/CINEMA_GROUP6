@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,20 +16,32 @@ using System.Data.SqlClient;
 
 namespace Cinema
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        // Lưu ý: Đảm bảo chuỗi kết nối này đúng với file .mdf thực tế của bạn
         string strCon = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\DBRapPhim.mdf;Integrated Security=True;Connect Timeout=30";
 
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += (s, e) => txtTaiKhoan.Focus();
         }
 
-        // Trong file MainWindow.xaml.cs, sửa phương thức BtnDangNhap_Click
+        private void txtTaiKhoan_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                txtMatKhau.Focus();
+            }
+        }
+
+        private void txtMatKhau_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                BtnDangNhap_Click(sender, new RoutedEventArgs());
+            }
+        }
+
         private void BtnDangNhap_Click(object sender, RoutedEventArgs e)
         {
             string taiKhoan = txtTaiKhoan.Text.Trim();
@@ -38,6 +50,7 @@ namespace Cinema
             if (string.IsNullOrEmpty(taiKhoan) || string.IsNullOrEmpty(matKhau))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ tài khoản và mật khẩu!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                txtTaiKhoan.Focus();
                 return;
             }
 
@@ -46,7 +59,6 @@ namespace Cinema
                 using (SqlConnection sqlCon = new SqlConnection(strCon))
                 {
                     sqlCon.Open();
-                    // Lấy cả tai_khoan, ho_ten và chuc_vu
                     string query = "SELECT tai_khoan, ho_ten, chuc_vu FROM nguoidung WHERE tai_khoan = @taikhoan AND mat_khau = @matkhau";
 
                     using (SqlCommand cmd = new SqlCommand(query, sqlCon))
@@ -56,9 +68,8 @@ namespace Cinema
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            if (reader.Read()) // Nếu có dữ liệu trả về (Đăng nhập đúng)
+                            if (reader.Read())
                             {
-                                // Lưu thông tin vào Session
                                 UserSession.TaiKhoan = reader["tai_khoan"].ToString();
                                 UserSession.HoTen = reader["ho_ten"].ToString();
                                 UserSession.ChucVu = reader["chuc_vu"].ToString();
@@ -73,6 +84,7 @@ namespace Cinema
                             {
                                 MessageBox.Show("Tài khoản hoặc mật khẩu không chính xác!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
                                 txtMatKhau.Clear();
+                                txtTaiKhoan.Focus();
                             }
                         }
                     }
@@ -84,7 +96,6 @@ namespace Cinema
             }
         }
 
-        // Sự kiện khi nhấn vào dòng chữ Quên mật khẩu
         private void txtQuenMatKhau_MouseDown(object sender, MouseButtonEventArgs e)
         {
             MessageBox.Show("Vui lòng liên hệ Admin để được cấp lại mật khẩu!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
