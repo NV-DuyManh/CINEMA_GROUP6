@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,8 +29,36 @@ namespace Cinema
             InitializeComponent();
         }
 
+        private void dpNgayKhoiChieu_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dpNgayKhoiChieu.SelectedDate != null)
+            {
+                // Không cho chọn ngày kết thúc nhỏ hơn ngày khởi chiếu
+                dpNgayKetThuc.DisplayDateStart = dpNgayKhoiChieu.SelectedDate;
+            }
+        }
+
+        private void dpNgayKetThuc_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dpNgayKetThuc.SelectedDate != null)
+            {
+                // Không cho chọn ngày khởi chiếu lớn hơn ngày kết thúc
+                dpNgayKhoiChieu.DisplayDateEnd = dpNgayKetThuc.SelectedDate;
+            }
+        }
         private void BtnLuu_Click(object sender, RoutedEventArgs e)
         {
+            if (dpNgayKhoiChieu.SelectedDate == null || dpNgayKetThuc.SelectedDate == null)
+            {
+                MessageBox.Show("Vui lòng chọn đầy đủ ngày!");
+                return;
+            }
+
+            if (dpNgayKhoiChieu.SelectedDate > dpNgayKetThuc.SelectedDate)
+            {
+                MessageBox.Show("Ngày khởi chiếu không được lớn hơn ngày kết thúc!");
+                return;
+            }
             try
             {
                 using (DBRapPhimEntities2 db = new DBRapPhimEntities2())
@@ -71,13 +99,16 @@ namespace Cinema
             p.ten_phim = txtTenPhim.Text;
             p.ma_the_loai = int.Parse(txtMaTheLoai.Text);
             p.thoi_luong = int.Parse(txtThoiLuong.Text);
-
+          
             if (dpNgayKhoiChieu.SelectedDate != null)
+            {
                 p.ngay_khoi_chieu = dpNgayKhoiChieu.SelectedDate.Value;
+            }
 
             if (dpNgayKetThuc.SelectedDate != null)
+            {
                 p.ngay_ket_thuc = dpNgayKetThuc.SelectedDate.Value;
-
+            }
             p.mo_ta = txtMoTa.Text;
 
             if (cbTrangThai.SelectedItem != null)
