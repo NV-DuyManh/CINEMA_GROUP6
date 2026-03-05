@@ -17,8 +17,8 @@
 | Tran Hoai Nam       | 29211159058 |
 | Dang Dai Viet       | 29211155820 |
 
-
-*** Role-Based Access
+---
+## Role-Based Access
 
 The system integrates a smart role-based access control feature, automatically adapting the user interface based on the logged-in account's role:
 
@@ -51,12 +51,12 @@ Open the file:
 Cinema.sln
 ```
 
-using **Visual Studio**.
+using **Visual Studio (2017/2022)**.
 
 ---
 
 ## 🗄 Database Setup
-
+**Note: Run the project for the first time to create the bin data -> Debug -> DBRapPhim.mdf**
 1. Open **Server Explorer** in Visual Studio
 2. Right-click **Data Connections → Add Connection**
 3. Select:
@@ -78,10 +78,12 @@ Cinema/bin/Debug/DBRapPhim.mdf
 ## ▶ Run Application
 
 Press **F5** in Visual Studio to start the program.
-   <img width="1779" height="1083" alt="image" src="https://github.com/user-attachments/assets/2b6b8fc6-bcd1-4266-86f4-32d916477ef8" />
-   <img width="1919" height="1129" alt="image" src="https://github.com/user-attachments/assets/7f9af57c-0a02-481b-89e5-e6a8bdb677d0" />
-   <img width="1919" height="1179" alt="image" src="https://github.com/user-attachments/assets/1d7e9651-4edc-47ed-87a8-112dee3f29f0" />
-   <img width="1919" height="1159" alt="image" src="https://github.com/user-attachments/assets/8e6faaa1-35ff-4f3d-aa22-a81321558675" />
+---
+## Demo Interface
+<img width="1779" height="1083" alt="image" src="https://github.com/user-attachments/assets/2b6b8fc6-bcd1-4266-86f4-32d916477ef8" />
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/3612b601-55e6-406f-a902-564288718d8e" />
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/fe19ac97-4279-406c-95c8-6e2446e0a584" />
+<img width="1919" height="1159" alt="image" src="https://github.com/user-attachments/assets/8e6faaa1-35ff-4f3d-aa22-a81321558675" />
 <img width="1919" height="1147" alt="image" src="https://github.com/user-attachments/assets/93b3d58a-bd6e-4b0a-bc2e-d02a6b3cd8ed" />
 <img width="1914" height="1138" alt="image" src="https://github.com/user-attachments/assets/337bbfb8-2733-4408-b17a-8bf9b4ec254a" />
 <img width="1919" height="1152" alt="image" src="https://github.com/user-attachments/assets/735e670b-ec7c-4135-9fff-1ca7596c16d1" />
