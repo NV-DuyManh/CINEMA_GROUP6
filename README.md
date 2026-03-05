@@ -56,7 +56,6 @@ using **Visual Studio (2017/2022)**.
 ---
 
 ## 🗄 Database Setup
-**Note: Run the project for the first time to create the bin data -> Debug -> DBRapPhim.mdf**
 1. Open **Server Explorer** in Visual Studio
 2. Right-click **Data Connections → Add Connection**
 3. Select:
