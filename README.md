@@ -17,6 +17,21 @@
 | Tran Hoai Nam       | 29211159058 |
 | Dang Dai Viet       | 29211155820 |
 
+
+*** Role-Based Access
+The system integrates a smart role-based access control feature, automatically adapting the user interface based on the logged-in account's role:
+
+👑 Admin Account: Has full control over the system. The navigation menu is fully visible, including the Account Management module for adding, editing, and deleting personnel records.
+      
+      username: admin
+      password: 123
+
+👤 Staff Account: Restricted to daily cinema operations. The Account Management menu is automatically hidden and access is locked to ensure internal security.
+      
+      username: manh
+      password: 123
+
+
 ---
 
 ## 📥 Installation
