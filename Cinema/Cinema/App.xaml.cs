@@ -14,4 +14,10 @@ namespace Cinema
     public partial class App : Application
     {
     }
+    public static class UserSession
+    {
+        public static string TaiKhoan { get; set; }
+        public static string ChucVu { get; set; }
+        public static string HoTen { get; set; }
+    }
 }

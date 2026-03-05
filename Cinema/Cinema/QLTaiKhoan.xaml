@@ -6,19 +6,20 @@
       xmlns:local="clr-namespace:Cinema"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="1000"
-      Title="Quản Lý Tài Khoản" Background="#F4F7F9">
-
+      Title="Quản Lý Tài Khoản" Background="#FFFFFF">
     <Page.Resources>
         <Style x:Key="ModernButton" TargetType="Button">
-            <Setter Property="Height" Value="35"/>
-            <Setter Property="Width" Value="100"/>
-            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="Padding" Value="20,0"/>
+            <Setter Property="Margin" Value="5,0"/>
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" CornerRadius="6">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
@@ -26,113 +27,130 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Opacity" Value="0.8"/>
+                    <Setter Property="Opacity" Value="0.85"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
 
         <Style x:Key="ModernTextBox" TargetType="TextBox">
-            <Setter Property="Height" Value="35"/>
+            <Setter Property="Height" Value="40"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Padding" Value="8,0"/>
+            <Setter Property="Padding" Value="12,0"/>
+            <Setter Property="BorderBrush" Value="#E0E6ED"/>
+            <Setter Property="Foreground" Value="#334155"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
-                        <Border x:Name="border" BorderBrush="#DDE2E8" BorderThickness="1" Background="White" CornerRadius="5">
-                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1.5" Background="#F8FAFC" CornerRadius="8">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false"/>
                         </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#3B82F6"/>
+                                <Setter TargetName="border" Property="Background" Value="White"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
     </Page.Resources>
 
-    <Grid Margin="20">
+    <Grid Margin="30">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="QUẢN LÝ TÀI KHOẢN NGƯỜI DÙNG" 
-                   FontSize="22" FontWeight="Bold" Foreground="#2C3E50" 
-                   Margin="0,0,0,15"/>
+        <StackPanel Margin="0,0,0,30">
+            <TextBlock Text="Quản Lý Tài Khoản" FontSize="26" FontWeight="Bold" Foreground="#1E293B"/>
+        </StackPanel>
 
-        <Border Grid.Row="1" Background="White" CornerRadius="10" Padding="15" Margin="0,0,0,20">
+        <Border Grid.Row="1" Background="White" CornerRadius="12" Padding="25" Margin="0,0,0,30" BorderBrush="#F1F5F9" BorderThickness="1">
             <Border.Effect>
-                <DropShadowEffect BlurRadius="10" Color="Gray" Opacity="0.2" ShadowDepth="2"/>
+                <DropShadowEffect BlurRadius="20" Color="#000000" Opacity="0.05" ShadowDepth="4"/>
             </Border.Effect>
 
             <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
 
-                <StackPanel Margin="10,5">
-                    <TextBlock Text="Tài khoản" Foreground="#7F8C8D" Margin="0,0,0,5" FontSize="11" FontWeight="SemiBold"/>
+                <StackPanel Margin="8">
+                    <TextBlock Text="Tài khoản" Foreground="#475569" Margin="0,0,0,8" FontSize="12" FontWeight="SemiBold"/>
                     <TextBox x:Name="txtTaiKhoan" Style="{StaticResource ModernTextBox}"/>
                 </StackPanel>
 
-                <StackPanel Grid.Column="1" Margin="10,5">
-                    <TextBlock Text="Mật khẩu" Foreground="#7F8C8D" Margin="0,0,0,5" FontSize="11" FontWeight="SemiBold"/>
+                <StackPanel Grid.Column="1" Margin="8">
+                    <TextBlock Text="Mật khẩu" Foreground="#475569" Margin="0,0,0,8" FontSize="12" FontWeight="SemiBold"/>
                     <TextBox x:Name="txtMatKhau" Style="{StaticResource ModernTextBox}"/>
                 </StackPanel>
 
-                <StackPanel Grid.Column="2" Margin="10,5">
-                    <TextBlock Text="Họ tên" Foreground="#7F8C8D" Margin="0,0,0,5" FontSize="11" FontWeight="SemiBold"/>
+                <StackPanel Grid.Column="2" Margin="8">
+                    <TextBlock Text="Họ và tên" Foreground="#475569" Margin="0,0,0,8" FontSize="12" FontWeight="SemiBold"/>
                     <TextBox x:Name="txtHoTen" Style="{StaticResource ModernTextBox}"/>
                 </StackPanel>
 
-                <StackPanel Grid.Row="1" Margin="10,5">
-                    <TextBlock Text="Chức vụ" Foreground="#7F8C8D" Margin="0,0,0,5" FontSize="11" FontWeight="SemiBold"/>
-                    <ComboBox x:Name="cbChucVu" Height="35" VerticalContentAlignment="Center">
+                <StackPanel Grid.Column="3" Margin="8">
+                    <TextBlock Text="Chức vụ" Foreground="#475569" Margin="0,0,0,8" FontSize="12" FontWeight="SemiBold"/>
+                    <ComboBox x:Name="cbChucVu" Height="40" VerticalContentAlignment="Center" Background="#F8FAFC" BorderBrush="#E0E6ED">
                         <ComboBoxItem Content="Admin"/>
                         <ComboBoxItem Content="Staff"/>
                     </ComboBox>
                 </StackPanel>
 
-                <StackPanel Grid.Row="1" Grid.Column="1" Margin="10,5">
-                    <TextBlock Text="Tìm kiếm" Foreground="#7F8C8D" Margin="0,0,0,5" FontSize="11" FontWeight="SemiBold"/>
-                    <TextBox x:Name="txtSearch" Style="{StaticResource ModernTextBox}" Tag="Nhập tên..."/>
-                </StackPanel>
-
-                <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,15,5,0">
-                    <Button x:Name="btnThem" Click="btnThem_Click" Content="Thêm mới" Background="#27AE60" Style="{StaticResource ModernButton}"/>
-                    <Button x:Name="btnSua" Click="btnSua_Click" Content="Cập nhật" Background="#2980B9" Style="{StaticResource ModernButton}"/>
-                    <Button x:Name="btnXoa" Click="btnXoa_Click" Content="Xóa" Background="#E74C3C" Style="{StaticResource ModernButton}"/>
-                    <Button x:Name="btnLamMoi" Click="btnLamMoi_Click" Content="Làm mới" Background="#95A5A6" Style="{StaticResource ModernButton}"/>
+                <StackPanel Grid.Row="1" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,8,0">
+                    <Button x:Name="btnLamMoi" Click="btnLamMoi_Click" Content="Làm mới" Background="#94A3B8" Style="{StaticResource ModernButton}"/>
+                    <Button x:Name="btnXoa" Click="btnXoa_Click" Content="Xóa nhân viên" Background="#EF4444" Style="{StaticResource ModernButton}"/>
+                    <Button x:Name="btnSua" Click="btnSua_Click" Content="Cập nhật" Background="#F59E0B" Style="{StaticResource ModernButton}"/>
+                    <Button x:Name="btnThem" Click="btnThem_Click" Content="+ Thêm thành viên" Background="#10B981" Style="{StaticResource ModernButton}" Width="Auto"/>
                 </StackPanel>
             </Grid>
         </Border>
 
-        <Border Grid.Row="2" Background="White" CornerRadius="10" Padding="5">
+        <Border Grid.Row="2" Background="White" CornerRadius="12" BorderBrush="#F1F5F9" BorderThickness="1" ClipToBounds="True">
             <DataGrid x:Name="dgNguoiDung" SelectionChanged="dgNguoiDung_SelectionChanged" 
                       AutoGenerateColumns="False" CanUserAddRows="False"
-                      Background="Transparent" BorderThickness="0" GridLinesVisibility="Horizontal"
-                      RowHeight="38" SelectionUnit="FullRow" IsReadOnly="True">
+                      Background="Transparent" BorderThickness="0" GridLinesVisibility="None"
+                      RowHeight="45" SelectionUnit="FullRow" IsReadOnly="True" HeadersVisibility="Column">
+
                 <DataGrid.ColumnHeaderStyle>
                     <Style TargetType="DataGridColumnHeader">
-                        <Setter Property="Background" Value="#2C3E50"/>
-                        <Setter Property="Foreground" Value="White"/>
-                        <Setter Property="Padding" Value="10,5"/>
+                        <Setter Property="Background" Value="#F8FAFC"/>
+                        <Setter Property="Foreground" Value="#64748B"/>
+                        <Setter Property="Padding" Value="15,0"/>
                         <Setter Property="FontWeight" Value="Bold"/>
-                        <Setter Property="Height" Value="35"/>
-                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Height" Value="45"/>
+                        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                        <Setter Property="BorderBrush" Value="#E2E8F0"/>
                     </Style>
                 </DataGrid.ColumnHeaderStyle>
+
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#EFF6FF"/>
+                                <Setter Property="Foreground" Value="#2563EB"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
+
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Mã NV" Binding="{Binding ma_nguoi_dung}" Width="70"/>
-                    <DataGridTextColumn Header="Tài khoản" Binding="{Binding tai_khoan}" Width="*"/>
-                    <DataGridTextColumn Header="Mật khẩu" Binding="{Binding mat_khau}" Width="*"/>
-                    <DataGridTextColumn Header="Họ tên" Binding="{Binding ho_ten}" Width="2*"/>
-                    <DataGridTextColumn Header="Chức vụ" Binding="{Binding chuc_vu}" Width="100"/>
+                    <DataGridTextColumn Header="ID" Binding="{Binding ma_nguoi_dung}" Width="60"/>
+                    <DataGridTextColumn Header="TÀI KHOẢN" Binding="{Binding tai_khoan}" Width="*"/>
+                    <DataGridTextColumn Header="MẬT KHẨU" Binding="{Binding mat_khau}" Width="*"/>
+                    <DataGridTextColumn Header="HỌ VÀ TÊN" Binding="{Binding ho_ten}" Width="2*"/>
+                    <DataGridTextColumn Header="CHỨC VỤ" Binding="{Binding chuc_vu}" Width="120"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Border>

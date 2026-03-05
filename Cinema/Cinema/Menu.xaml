@@ -112,9 +112,9 @@
                     <Button Style="{StaticResource SideMenuCard}"
                             Content="🕒  Quản lý suất chiếu"
                             Click="BtnSuatChieu_Click"/>
-
-                    <Button Style="{StaticResource SideMenuCard}"
-                            Content="👤  Quản lý tài khoản"
+                    <Button x:Name="btnQLTaiKhoan" 
+                            Style="{StaticResource SideMenuCard}"
+                            Content="👤 Quản lý tài khoản"
                             Click="BtnTaiKhoan_Click"/>
                 </StackPanel>
 

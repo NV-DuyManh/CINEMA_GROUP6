@@ -29,6 +29,7 @@ namespace Cinema
             InitializeComponent();
         }
 
+        // Trong file MainWindow.xaml.cs, sửa phương thức BtnDangNhap_Click
         private void BtnDangNhap_Click(object sender, RoutedEventArgs e)
         {
             string taiKhoan = txtTaiKhoan.Text.Trim();
@@ -45,33 +46,41 @@ namespace Cinema
                 using (SqlConnection sqlCon = new SqlConnection(strCon))
                 {
                     sqlCon.Open();
-                    string query = "SELECT COUNT(1) FROM nguoidung WHERE tai_khoan = @taikhoan AND mat_khau = @matkhau";
+                    // Lấy cả tai_khoan, ho_ten và chuc_vu
+                    string query = "SELECT tai_khoan, ho_ten, chuc_vu FROM nguoidung WHERE tai_khoan = @taikhoan AND mat_khau = @matkhau";
 
                     using (SqlCommand cmd = new SqlCommand(query, sqlCon))
                     {
                         cmd.Parameters.AddWithValue("@taikhoan", taiKhoan);
                         cmd.Parameters.AddWithValue("@matkhau", matKhau);
-                        int result = Convert.ToInt32(cmd.ExecuteScalar());
 
-                        if (result == 1)
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
-                            Menu formMenu = new Menu();
-                            formMenu.Show();
-                            this.Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Tài khoản hoặc mật khẩu không chính xác. Vui lòng kiểm tra lại!", "Lỗi đăng nhập", MessageBoxButton.OK, MessageBoxImage.Error);
-                            txtMatKhau.Clear();
-                            txtTaiKhoan.Focus();
+                            if (reader.Read()) // Nếu có dữ liệu trả về (Đăng nhập đúng)
+                            {
+                                // Lưu thông tin vào Session
+                                UserSession.TaiKhoan = reader["tai_khoan"].ToString();
+                                UserSession.HoTen = reader["ho_ten"].ToString();
+                                UserSession.ChucVu = reader["chuc_vu"].ToString();
+
+                                MessageBox.Show($"Chào mừng {UserSession.HoTen} ({UserSession.ChucVu}) trở lại!", "Thông báo");
+
+                                Menu formMenu = new Menu();
+                                formMenu.Show();
+                                this.Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Tài khoản hoặc mật khẩu không chính xác!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                                txtMatKhau.Clear();
+                            }
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi kết nối Cơ sở dữ liệu: \n" + ex.Message, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Lỗi kết nối: " + ex.Message);
             }
         }
 

@@ -10,6 +10,10 @@ namespace Cinema
         public Menu()
         {
             InitializeComponent();
+            if (UserSession.ChucVu != "Admin")
+            {
+                btnQLTaiKhoan.Visibility = Visibility.Collapsed;
+            }
         }
 
         // Sự kiện click vào tiêu đề để quay về trang chào mừng
@@ -33,9 +37,21 @@ namespace Cinema
             MainFrame.Navigate(new QLSuatChieu());
         }
 
+        
         private void BtnTaiKhoan_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new QLTaiKhoan());
+            
+            if (UserSession.ChucVu == "Admin")
+            {
+                MainFrame.Navigate(new QLTaiKhoan());
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập vào chức năng Quản lý tài khoản. Chỉ dành cho Quản trị viên!",
+                                "Truy cập bị từ chối",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Stop);
+            }
         }
 
         private void BtnDangXuat_Click(object sender, RoutedEventArgs e)
