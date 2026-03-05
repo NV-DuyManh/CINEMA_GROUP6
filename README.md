@@ -1,6 +1,9 @@
-# 🎬 Cinema Management System
+<div align="center">
 
-A **Cinema Management System** built with **C#**, **WPF**, and **SQL Server** to manage movie screenings, bookings, and cinema operations.
+  <img src="https://media.giphy.com/media/l2Je2skI6CVnZ0Sju/giphy.gif" width="100px">
+
+  #  🎬 Cinema Management System
+</div>
 
 ---
 
