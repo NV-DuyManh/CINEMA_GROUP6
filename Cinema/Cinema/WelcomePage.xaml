@@ -126,7 +126,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="🔥 PHIM ĐANG HOT" FontSize="20" FontWeight="Bold" Foreground="#2C3E50" Margin="10,0,0,15"/>
+                <TextBlock Text="🔥 PHIM HIỆN CÔNG CHIẾU" FontSize="20" FontWeight="Bold" Foreground="#2C3E50" Margin="10,0,0,15"/>
 
                 <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
                     <StackPanel Orientation="Horizontal" Margin="0,5,0,5" HorizontalAlignment="Center" VerticalAlignment="Top">
@@ -176,6 +176,102 @@
                                 </Border>
                                 <TextBlock Text="EXHUMA: QUẬT MỘ TRÙNG MA" Foreground="White" FontWeight="Bold" FontSize="15" Margin="15,15,15,5" TextTrimming="CharacterEllipsis"/>
                                 <TextBlock Text="Kinh dị, Giật gân | 134p" Foreground="#BDC3C7" FontSize="12" Margin="15,0,15,15"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Style="{StaticResource MovieCard}">
+                            <StackPanel>
+                                <Border Height="240" CornerRadius="15,15,0,0">
+                                    <Border.Background>
+                                        <ImageBrush ImageSource="https://iguov8nhvyobj.vcdn.cloud/media/catalog/product/cache/1/image/c5f0a1eff4c394a251036189ccddaacd/l/a/lat-mat-7.jpg" Stretch="UniformToFill"/>
+                                    </Border.Background>
+                                </Border>
+                                <TextBlock Text="LẬT MẶT 7: MỘT ĐIỀU ƯỚC" Foreground="White" FontWeight="Bold" FontSize="15" Margin="15,15,15,5" TextTrimming="CharacterEllipsis"/>
+                                <TextBlock Text="Hài hước | 120p" Foreground="#BDC3C7" FontSize="12" Margin="15,0,15,15"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Style="{StaticResource MovieCard}">
+                            <StackPanel>
+                                <Border Height="240" CornerRadius="15,15,0,0">
+                                    <Border.Background>
+                                        <ImageBrush ImageSource="https://m.media-amazon.com/images/M/MV5BMTY0N2MzODctY2ExYy00OWYxLTkyNDItMTVhZGIxZjliZjU5XkEyXkFqcGc@._V1_.jpg" Stretch="UniformToFill"/>
+                                    </Border.Background>
+                                </Border>
+                                <TextBlock Text="GODZILLA X KONG" Foreground="White" FontWeight="Bold" FontSize="15" Margin="15,15,15,5" TextTrimming="CharacterEllipsis"/>
+                                <TextBlock Text="Hành động | 115p" Foreground="#BDC3C7" FontSize="12" Margin="15,0,15,15"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Style="{StaticResource MovieCard}">
+                            <StackPanel>
+                                <Border Height="240" CornerRadius="15,15,0,0">
+                                    <Border.Background>
+                                        <ImageBrush ImageSource="https://posterspy.com/wp-content/uploads/2022/10/DEADPOOL-3-POSTER-min.jpg" Stretch="UniformToFill"/>
+                                    </Border.Background>
+                                </Border>
+                                <TextBlock Text="DEADPOOL 3" Foreground="White" FontWeight="Bold" FontSize="15" Margin="15,15,15,5" TextTrimming="CharacterEllipsis"/>
+                                <TextBlock Text="Hành động | 125p" Foreground="#BDC3C7" FontSize="12" Margin="15,0,15,15"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Style="{StaticResource MovieCard}">
+                            <StackPanel>
+                                <Border Height="240" CornerRadius="15,15,0,0">
+                                    <Border.Background>
+                                        <ImageBrush ImageSource="https://resizing.flixster.com/z4hiL8ZBmyZYrgP523AZvdk7uUI=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzRmOWU4ODJhLTNkMzAtNDNhMC04YjhjLWVkMjJjMGI4MjE4Ni5wbmc=" Stretch="UniformToFill"/>
+                                    </Border.Background>
+                                </Border>
+                                <TextBlock Text="JOKER 2" Foreground="White" FontWeight="Bold" FontSize="15" Margin="15,15,15,5" TextTrimming="CharacterEllipsis"/>
+                                <TextBlock Text="Tâm lý | 110p" Foreground="#BDC3C7" FontSize="12" Margin="15,0,15,15"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Style="{StaticResource MovieCard}">
+                            <StackPanel>
+                                <Border Height="240" CornerRadius="15,15,0,0">
+                                    <Border.Background>
+                                        <ImageBrush ImageSource="https://play-lh.googleusercontent.com/OUKPCi4GwRcNa9EhzFT59Zo2hTVyWXL2idB37sVf3lbaotmnzw7qEeHnlF4dkRcghx2QZ_4eyruuduXNUOs" Stretch="UniformToFill"/>
+                                    </Border.Background>
+                                </Border>
+                                <TextBlock Text="INSIDE OUT 2" Foreground="White" FontWeight="Bold" FontSize="15" Margin="15,15,15,5" TextTrimming="CharacterEllipsis"/>
+                                <TextBlock Text="Hoạt hình | 100p" Foreground="#BDC3C7" FontSize="12" Margin="15,0,15,15"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Style="{StaticResource MovieCard}">
+                            <StackPanel>
+                                <Border Height="240" CornerRadius="15,15,0,0">
+                                    <Border.Background>
+                                        <ImageBrush ImageSource="https://resizing.flixster.com/8PNiwC2bpe9OecfYZSOVkvYC5vk=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2U5NGM0Y2Q1LTAyYTItNGFjNC1hNWZhLWMzYjJjOTdjMTFhOS5qcGc=" Stretch="UniformToFill"/>
+                                    </Border.Background>
+                                </Border>
+                                <TextBlock Text="SPIDER-MAN: NO WAY HOME" Foreground="White" FontWeight="Bold" FontSize="15" Margin="15,15,15,5" TextTrimming="CharacterEllipsis"/>
+                                <TextBlock Text="Hành động | 140p" Foreground="#BDC3C7" FontSize="12" Margin="15,0,15,15"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Style="{StaticResource MovieCard}">
+                            <StackPanel>
+                                <Border Height="240" CornerRadius="15,15,0,0">
+                                    <Border.Background>
+                                        <ImageBrush ImageSource="https://static.aircms.xyz/storage/images/nguoi-sat-2/nguoi-sat-2-poster.webp" Stretch="UniformToFill"/>
+                                    </Border.Background>
+                                </Border>
+                                <TextBlock Text="IRON MAN" Foreground="White" FontWeight="Bold" FontSize="15" Margin="15,15,15,5" TextTrimming="CharacterEllipsis"/>
+                                <TextBlock Text="Hành động, Viễn tưởng | 140p" Foreground="#BDC3C7" FontSize="12" Margin="15,0,15,15"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Style="{StaticResource MovieCard}">
+                            <StackPanel>
+                                <Border Height="240" CornerRadius="15,15,0,0">
+                                    <Border.Background>
+                                        <ImageBrush ImageSource="https://upload.wikimedia.org/wikipedia/vi/2/29/%C3%81p_ph%C3%ADch_%C4%90%C3%A0o%2C_ph%E1%BB%9F_v%C3%A0_piano.jpg" Stretch="UniformToFill"/>
+                                    </Border.Background>
+                                </Border>
+                                <TextBlock Text="ĐÀO, PHỞ VÀ PIANO" Foreground="White" FontWeight="Bold" FontSize="15" Margin="15,15,15,5" TextTrimming="CharacterEllipsis"/>
+                                <TextBlock Text="Tâm lý, Lịch sử | 100p" Foreground="#BDC3C7" FontSize="12" Margin="15,0,15,15"/>
                             </StackPanel>
                         </Border>
 
